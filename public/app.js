@@ -253,7 +253,7 @@ let signin = () => {
                         if (user.val()) {
                             window.location = "rest-dash.html";
                         } else {
-                            window.location = "index.html"
+                            window.location = "profile.html"
                         }
                     })
                     // var uid = user.uid;
