@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", "Open Sans", "Helvetica Neue", sans-serif;
+}
+@font-face {
+  font-family: "Open Sans";
+  src: url(../font/OpenSans-Light.ttf);
+}
+
+.logo {
+  width: 70px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+.nav-item {
+  display: inline-block;
+}
+.nav-li {
+  display: inline;
+  padding: 10px 15px;
+  color: rgb(255, 0, 0);
+  font-size: 14px;
+}
+li {
+  color: #ff0000;
+  text-decoration: none;
+}
+li:hover {
+  color: rgb(100, 2, 2);
+  text-decoration: none;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #ff0000 !important;
+}
+.myCard{
+  margin-top: 20px;
+}
+
+.modal-css{
+  display: flex;
+  justify-content: space-around;
+  /* padding: 0 auto; */
+}
+.icon {
+  margin: 0;
+  display: inline;
+  padding: 0px;
+}
+#logOut-Btn{
+  display: none;
+}
+
+.btn {
+  /* padding: 1px 5px 5px 1px; */
+  background-color: rgb(251, 0, 0);
+  color: white;
+  text-align: center;
+  padding-top: 10px;
+  border-radius: 5px;
+  height: 40px;
+  transition: 0.2s;
+}
+.btn:hover {
+  color: white;
+  padding-top: 15px;
+}
+.btn-now {
+  padding: 3px 3px 3px 3px;
+  background-color: red;
+  border-radius: 5px;
+}
+.btn-now > a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+.btn-now > a:hover {
+  color: white;
+}
+.slider {
+  width: 100%;
+  margin: 0 auto;
+}
+.slide {
+  margin-top: 10px;
+  max-width: 100%;
+  min-width: 30%;
+}
+.welcome {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+.head-signup {
+  
+  font-family: "Segoe UI", "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 500;
+}
+.form-control{
+    width: 70% !important;
+}
+h1 {
+  margin: 20px;
+  font-family: "Segoe UI", "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 500;
+}
+.space-top {
+    margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 70% !important;
+
+  padding:0 auto;
+}
+button {
+  background-color: black;
+  color: white;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: 5px 0;
+}
+.brand-container {
+  width: 100%;
+  background-image: url(../image/bg-img.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  text-align: left;
+}
+
+.brand {
+  background-color: rgb(7, 7, 7, 0.75);
+}
+h2 {
+  text-transform: capitalize;
+  font-size: 45px;
+  font-weight: 500;
+  padding: 25px;
+  color: white;
+}
+.bran {
+  width: 20%;
+  display: inline-block;
+  text-align: left;
+  margin: 10px 5%;
+}
+.franch {
+  width: 20%;
+  display: inline-block;
+  text-align: left;
+  margin: 10px 5%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 30px;
+  cursor: pointer;
+}
+ul {
+  list-style-type: none;
+}
+.img {
+  width: 100%;
+  background-color: white;
+}
+.tag {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.franch > p {
+  text-align: center;
+  /* color: white; */
+  display: inline-flexbox;
+  justify-content: center;
+  font-size: 12px;
+  margin: 0 auto;
+}
+.fran {
+  color: white;
+}
+.pre-footer-container {
+  background: url(../image/footer.jpg) no-repeat;
+  background-attachment: fixed;
+  background-position-x: 50%;
+  background-position-y: 53%;
+  background-size: cover;
+  margin-left: 0;
+  margin-right: 0;
+}
+.pre-footer {
+  background-color: rgb(7, 7, 7, 0.75);
+  padding: 20px;
+}
+.pre-footer-item {
+  width: 80%;
+  margin: 0 auto;
+}
+.links {
+  color: white;
+  text-align: left;
+  width: 20%;
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px 40px 10px 0px;
+}
+.links a {
+  color: white;
+}
+h4 {
+  font-size: 30px;
+  font-weight: lighter;
+}
+.ad {
+  list-style-image: url(../image/ad.png);
+  list-style-position: inside;
+}
+.tel {
+  list-style-image: url(../image/tel.png);
+  list-style-position: inside;
+}
+.em {
+  list-style-image: url(../image/em.png);
+  list-style-position: inside;
+}
+.fax {
+  list-style-image: url(../image/fax.png);
+  list-style-position: inside;
+}
+.uan {
+  list-style-image: url(../image/uan.png);
+  list-style-position: inside;
+}
+h5 {
+  font-size: 22px;
+}
+#loader{
+display:none
+}

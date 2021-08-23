@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moto Restarurants</title>
+    <link rel="icon" href="image/logo.jpg">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="chxk()">
+    <div class="main">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="header-logo">
+                <img class="logo" src="image/logo.jpg" alt="">
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item active nav-li">
+                        Home
+                    </li>
+                    <li class="nav-item nav-li">About Us
+                    </li>
+                    <li class="nav-item dropdown nav-li">
+                        <span class="nav-item nav-li" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Restaurants
+                        </span>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <span class="dropdown-item">Abc</span>
+                            <span class="dropdown-item">Abc</span>
+
+                    </li>
+                    <li class="nav-item nav-li">Become a Partner
+                    </li>
+                    <li class="nav-item nav-li">Rs.0<img class="icon" src="image/shopping-cart.png" alt=""></li>
+                    <li class="nav-item nav-li btn">Order Online</li>
+                    <li class="nav-item nav-li" id="signupBtn" data-toggle="modal" data-target="#exampleModal">Signup</li>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">User Type</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body modal-css">
+                                    <button type="button" class="btn btn-danger" onclick="business()">Business
+                                        Partner</button>
+                                    <button type="button" class="btn btn-danger" onclick="signup()">Customer</button>
+                                </div>
+                                <div class="modal-footer">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <li id="login-Btn" class="nav-item nav-li" onclick="login()">Log In</li>
+                    <li id="logOut-Btn" class="nav-item nav-li" onclick="logOut()">Log Out</li>
+                </ul>
+
+            </div>
+        </nav>
+        <div class="space-top">
+            <h1 class="head-signup">Login</h1>
+           
+    <div id="customerSignUp" class="customerSignUp">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+                <label for="password" aria-describedby="passwordHelp">Password</label>
+                <input type="password" class="form-control" id="password">
+            </div>
+            <button class="btn btn-danger" onclick="signin()"><span id="loader" class="spinner-border text-light" role="status">
+                <span class="sr-only">
+                Loading...</span></span>
+                            <span id="loaderText"> Login</span></button>
+                            <button class="btn btn-danger"data-toggle="modal" data-target="#exampleModal">Sign Up</button>
+        </div>
+        
+        </div>
+
+
+        <div class="pre-footer-container">
+            <div class="pre-footer">
+                <div class="pre-footer-item">
+                    <div class="links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><a href="">Home</a> </li>
+                            <li><a href="">About Us</a></li>
+                            <li><a href="">Get Connected</a></li>
+                            <li><a href=""> Feedback</a></li>
+                            <li><a href=""> Offers</a></li>
+                            <li><a href=""> Signup</a></li>
+                            <li><a href=""> Login</a></li>
+                        </ul>
+
+                    </div>
+                    <div class="links">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li><a href="">Moto Resturant(Pvt) Ltd.</a> </li>
+                            <li class="ad">Abcd Road karachi</li>
+                            <li class="tel"><a href="">+92-12-31234567</a></li>
+                            <li class="fax"><a href="">+92-12-31234567</a></li>
+                            <li class="uan"><a href="">111-111-111</a></li>
+                            <li class="em"><a href="">abc@gmail.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="links">
+                        <h4>Information</h4>
+                        <ul>
+                            <li><a href="">Terms & Conditions</a> </li>
+                            <li><a href="">Privacy Policy</a> </li>
+                        </ul>
+                    </div>
+                    <div class="links">
+                        <h4>Find Us</h4>
+                        <ul>
+                            <li><a href=""><img src="image/fb.png" width="40px" alt=""></a><a href=""><img
+                                        src="image/twit.png" width="40px" alt=""></a><a href=""><img
+                                        src="image/insta.png" width="40px" alt=""></a></li>
+                            <li><a href="">
+                                    <h5>Download the App</h5>
+                                </a> </li>
+                            <li><a href=""><img src="image/google.png" width="50%" alt=""></a><a href=""><img
+                                        src="image/apple.png" width="50%" alt=""></a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyA1rEqICM-z1V_FQEokxCljYlwTSswGFUA",
+            authDomain: "hackathon-9b1ee.firebaseapp.com",
+            projectId: "hackathon-9b1ee",
+            storageBucket: "hackathon-9b1ee.appspot.com",
+            messagingSenderId: "616872293980",
+            appId: "1:616872293980:web:30dc239616686c7b6b1899"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
