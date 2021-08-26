@@ -37,10 +37,9 @@ li:hover {
     color: #fff;
     background-color: #ff0000 !important;
 }
-.myCard{
-  margin-top: 20px;
+.card-text{
+margin-bottom: 1px !important;
 }
-
 .modal-css{
   display: flex;
   justify-content: space-around;
@@ -56,19 +55,31 @@ li:hover {
 }
 
 .btn {
-  /* padding: 1px 5px 5px 1px; */
   background-color: rgb(251, 0, 0);
   color: white;
   text-align: center;
   padding-top: 10px;
   border-radius: 5px;
-  height: 40px;
   transition: 0.2s;
+  font-size: 14px;
 }
 .btn:hover {
   color: white;
-  padding-top: 15px;
+  font-size: 13.5px;
 }
+.myBtn{
+  background-color: rgb(251, 0, 0);
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  transition: 0.2s;
+  font-size: 14px;
+}
+.btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(71, 1, 1, 0.25) !important;
+}
+
 .btn-now {
   padding: 3px 3px 3px 3px;
   background-color: red;
@@ -116,6 +127,12 @@ h1 {
   width: 70% !important;
 
   padding:0 auto;
+}
+.newTab{
+  display: block;
+}
+.newTab1{
+  display: none;
 }
 button {
   background-color: black;
@@ -240,4 +257,13 @@ h5 {
 }
 #loader{
 display:none
+}
+
+@media (max-width: 450px){
+  .newTab{
+    display: none;
+  }
+  .newTab1{
+    display: block;
+  }
 }

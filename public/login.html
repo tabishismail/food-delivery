@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body onload="chxk()">
+<body onload="loginPage()">
     <div class="main">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="header-logo">
@@ -43,7 +43,8 @@
                     </li>
                     <li class="nav-item nav-li">Rs.0<img class="icon" src="image/shopping-cart.png" alt=""></li>
                     <li class="nav-item nav-li btn">Order Online</li>
-                    <li class="nav-item nav-li" id="signupBtn" data-toggle="modal" data-target="#exampleModal">Signup</li>
+                    <li class="nav-item nav-li" id="signupBtn" data-toggle="modal" data-target="#exampleModal">Signup
+                    </li>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -74,23 +75,24 @@
         </nav>
         <div class="space-top">
             <h1 class="head-signup">Login</h1>
-           
-    <div id="customerSignUp" class="customerSignUp">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email">
+
+            <div id="customerSignUp" class="customerSignUp">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="password" aria-describedby="passwordHelp">Password</label>
+                    <input type="password" class="form-control" id="password">
+                </div>
+                <button class="btn myBtn btn-danger" onclick="signin()"><span id="loader"
+                        class="spinner-border text-light" role="status">
+                        <span class="sr-only">Loading...</span></span>
+                    <span id="loaderText"> Login</span>
+                </button>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Sign Up</button>
             </div>
-            <div class="form-group">
-                <label for="password" aria-describedby="passwordHelp">Password</label>
-                <input type="password" class="form-control" id="password">
-            </div>
-            <button class="btn btn-danger" onclick="signin()"><span id="loader" class="spinner-border text-light" role="status">
-                <span class="sr-only">
-                Loading...</span></span>
-                            <span id="loaderText"> Login</span></button>
-                            <button class="btn btn-danger"data-toggle="modal" data-target="#exampleModal">Sign Up</button>
-        </div>
-        
+
         </div>
 
 
@@ -145,7 +147,7 @@
             </div>
         </div>
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
