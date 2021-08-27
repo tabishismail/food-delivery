@@ -44,7 +44,8 @@
                     </li>
                     <li class="nav-item nav-li">Rs.0<img class="icon" src="image/shopping-cart.png" alt=""></li>
                     <li class="nav-item nav-li btn">Order Online</li>
-                    <li class="nav-item nav-li" id="signupBtn" data-toggle="modal" data-target="#exampleModal">Signup</li>
+                    <li class="nav-item nav-li" id="signupBtn" data-toggle="modal" data-target="#exampleModal">Signup
+                    </li>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -75,40 +76,42 @@
         </nav>
         <div class="space-top">
             <h1 class="head-signup">Customer Sign Up</h1>
-           
-    <div id="customerSignUp" class="customerSignUp">
-            <div class="form-group">
-                <label for="userName">User Name</label>
-                <input type="text" class="form-control" id="userName">
+
+            <div id="customerSignUp" class="customerSignUp">
+                <div class="form-group">
+                    <label for="userName">User Name</label>
+                    <input type="text" class="form-control" id="userName">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone">
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control" id="country">
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="password" aria-describedby="passwordHelp">Password</label>
+                    <small id="passwordHelp" class="form-text text-muted">Pasword should container one capital letter
+                        one number
+                        one small letter atleast 6 words</small>
+                    <input type="password" class="form-control" id="password">
+                </div>
+                <button class="btn btn-danger" onclick="register()"><span id="loader" class="spinner-border text-light"
+                        role="status">
+                        <span class="sr-only">
+                            Loading...</span></span>
+                    <span id="loaderText"> Register</span></button>
             </div>
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone">
-            </div>
-            <div class="form-group">
-                <label for="country">Country</label>
-                <input type="text" class="form-control" id="country">
-            </div>
-            <div class="form-group">
-                <label for="city">City</label>
-                <input type="text" class="form-control" id="city">
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email">
-            </div>
-            <div class="form-group">
-                <label for="password" aria-describedby="passwordHelp">Password</label>
-                <small id="passwordHelp" class="form-text text-muted">Pasword should container one capital letter one number
-                    one small letter atleast 6 words</small>
-                <input type="password" class="form-control" id="password">
-            </div>
-            <button class="btn btn-danger" onclick="register()"><span id="loader" class="spinner-border text-light" role="status">
-                <span class="sr-only">
-                Loading...</span></span>
-                            <span id="loaderText"> Register</span></button>
-        </div>
-        
+
         </div>
 
 
@@ -163,7 +166,7 @@
             </div>
         </div>
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

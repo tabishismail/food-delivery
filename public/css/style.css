@@ -134,6 +134,9 @@ h1 {
 .newTab1{
   display: none;
 }
+.indexSignup{
+  margin: 3px auto;
+}
 button {
   background-color: black;
   color: white;
@@ -151,10 +154,12 @@ button {
 }
 
 .brand {
-  background-color: rgb(7, 7, 7, 0.75);
+  background-color: rgba(88, 7, 7, 0.75);
+  /* text-align: center; */
 }
 h2 {
   text-transform: capitalize;
+  text-align: center;
   font-size: 45px;
   font-weight: 500;
   padding: 25px;

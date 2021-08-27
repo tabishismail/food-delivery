@@ -307,6 +307,24 @@ let loginPage = () => {
 
 }
 
+
+let addToCart = (a,b,c,d,e,f,g, key) => {
+    console.log(a,b,c,d,e,f,g,key)
+    
+    firebase.database().ref(`cart`).push({
+        pic:a,
+        itemName:b,
+        catergory:c,
+        price:d,
+        delType:e,
+        uid:f,
+        custUid:key,
+        status:g
+    })
+    // firebase.database().ref(`cart/${user}`).update(obj)
+}
+
+
 let index = () => {
     firebase.auth().onAuthStateChanged((user) => {
         let loginBtn = document.getElementById("login-Btn");
@@ -315,42 +333,49 @@ let index = () => {
         let signUpBtn2 = document.getElementById("signupBtn2");
         let userProfile = document.getElementById("userProfile");
         let dashboard = document.getElementById("dashboard");
+        let bill = document.getElementById("bill");
+
         if (user) {
+            let cust=user.uid;
+            console.log(cust)
             firebase.database().ref(`resturant/${user.uid}`).once("value", (user) => {
                 if (user.val()) {
                     dashboard.style.display = "block";
                     userProfile.style.display = "none";
+                    bill.style.display="none"
                     firebase.database().ref(`products`).on("child_added", (data) => {
                         console.log(data.val().itemName)
                         let dishes = document.getElementById("dishes");
                         dishes.innerHTML += `
-                    <div class="card myCard" style="width: 18rem;">
-                <img src="${data.val().pic}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">${data.val().itemName}</h5>
-                  <p class="card-text">${data.val().category} </p>
-                  <p class="card-text">Price Rs ${data.val().price} </p>
-                  <p class="card-text">Type of Delivery ${data.val().delType} </p>       
-                </div>
-            </div> `})
+                    <div class="card border-light mb-3" style="max-width: 18rem;">
+                    <img src="${data.val().pic}" class="card-img-top" alt="...">
+                    <div class="card-header">${data.val().itemName}</div>
+                    <div class="card-body text-dark">
+                    <p class="card-text"><strong>Catergory :</strong>${data.val().category} </p>
+                    <p class="card-text"><strong>Price Rs :</strong>${data.val().price} </p>
+                    <p class="card-text"><strong>Type of Delivery :</strong>${data.val().delType} </p>       
+                    </div>
+                    </div> `})
 
                 } else {
                     dashboard.style.display = "none";
                     userProfile.style.display = "block";
+                    bill.style.display="block"
                     firebase.database().ref(`products`).on("child_added", (data) => {
-                        console.log(data.val().itemName)
                         let dishes = document.getElementById("dishes");
+                        let key=user.key
                         dishes.innerHTML += `
-                    <div class="card myCard" style="width: 18rem;">
-                <img src="${data.val().pic}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">${data.val().itemName}</h5>
-                  <p class="card-text">${data.val().category} </p>
-                  <p class="card-text">Price Rs ${data.val().price} </p>
-                  <p class="card-text">Type of Delivery ${data.val().delType} </p>
-                  <button onclick=${addToCart(data.val(), user)}>Add to Cart</button>       
-                </div>
-            </div> `})
+                        <div class="card border-light mb-3" style="max-width: 18rem;">
+                        <img src="${data.val().pic}" class="card-img-top" alt="...">
+                        <div class="card-header">${data.val().itemName}</div>
+                        <div class="card-body text-dark">
+                          <p class="card-text"><strong>Catergory :</strong>${data.val().category} </p>
+                          <p class="card-text"><strong>Price Rs :</strong>${data.val().price} </p>
+                          <p class="card-text"><strong>Type of Delivery :</strong>${data.val().delType} </p>       
+                          <button class=""myBtn indexSignup" onclick="addToCart('${data.val().pic}','${data.val().itemName}','${data.val().category}','${data.val().price}','${data.val().delType}','${data.val().uid}','${data.val().status}','${key}')">Add to Cart</button>       
+                        </div>
+                    </div>`
+               })
                 }
             })
             loginBtn.style.display = "none";
@@ -367,26 +392,34 @@ let index = () => {
             logOutBtn.style.display = "none"
             signUpBtn.style.display = "block"
             signUpBtn2.style.display = "block"
+            bill.style.display="none"
             firebase.database().ref(`products`).on("child_added", (data) => {
                 console.log(data.val().itemName)
                 let dishes = document.getElementById("dishes");
                 dishes.innerHTML += `
-            <div class="card myCard" style="width: 18rem;">
-        <img src="${data.val().pic}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${data.val().itemName}</h5>
-          <p class="card-text">${data.val().category} </p>
-          <p class="card-text">Price Rs ${data.val().price} </p>
-          <p class="card-text">Type of Delivery ${data.val().delType} </p>
-          <button data-toggle="modal" data-target="#exampleModal">Add to Cart</button>       
-        </div>
-    </div> `
-            })
+                <div class="card border-light mb-3" style="max-width: 18rem;">
+                <img src="${data.val().pic}" class="card-img-top" alt="...">
+                <div class="card-header">${data.val().itemName}</div>
+                <div class="card-body text-dark">
+                <p class="card-text"><strong>Catergory :</strong>${data.val().category} </p>
+                <p class="card-text"><strong>Price Rs :</strong>${data.val().price} </p>
+                <p class="card-text"><strong>Type of Delivery :</strong>${data.val().delType} </p>      
+                  <button class="myBtn indexSignup" data-toggle="modal" data-target="#exampleModal">Add to Cart</button>       
+                </div>
+            </div> `
+          
+          
+                 
+        })
             
             // ...
         }
     }
     )
+}
+
+let userProfile=()=>{
+    window.location="profile.html"
 }
 
 let restDash = () => {
@@ -416,3 +449,31 @@ let restDash = () => {
     )
 }
 
+let dashboard=()=>{
+    window.location="rest-dash.html"
+}
+
+let profilePage=()=>{
+    let loginBtn = document.getElementById("login-Btn");
+    let logOutBtn = document.getElementById("logOut-Btn");
+    let signUpBtn = document.getElementById("signupBtn");
+
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            firebase.database().ref(`resturant/${user.uid}`).once("value", (user) => {
+                if (user.val()) {
+                    window.location = "rest-dash.html";
+                } else {
+                    loginBtn.style.display = "none";
+                    logOutBtn.style.display = "block"
+                    signUpBtn.style.display = "none"
+                }
+            })
+        }
+        else {
+            window.location="login.html"
+        }
+    })
+
+
+}

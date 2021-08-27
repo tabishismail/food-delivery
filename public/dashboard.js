@@ -47,7 +47,7 @@ let addProduct = () => {
             itemName: itemName.value,
             category: category.value,
             delType: delType.value,
-            price: "Rs: " + price.value,
+            price: price.value,
             pic: image,
             status: "pending",
             uid: uid,
@@ -108,7 +108,7 @@ let editProduct= ()=>{
                 itemName: itemName.value,
                 category: category.value,
                 delType: delType.value,
-                price:"Rs: "+price.value,
+                price: price.value,
                 pic: image,
             })
             document.getElementById("close").click()
@@ -118,27 +118,6 @@ let editProduct= ()=>{
     )
 
 }
-
-
-// firebase.database().ref(`users/dishes/${RestId}/${dsihId}`).on("value", (dishData) => {
-//     itemName.value = dishData.val().foodName
-//     price.value = dishData.val().foodPrice
-//     foodCatagoryE.value = dishData.val().foodCatagory
-//     DeleveryTypeE.value = dishData.val().deleveryType
-// }
-// )
-// }
-
-// let profileName = () => {
-//     firebase.auth().onAuthStateChanged((user) => {
-//         if (user) {
-//             firebase.database().ref(`resturant/${user.uid}`).once("value", (data) => {
-//                 let profileName = document.getElementById("profileName");
-//                 profileName.innerHTML = `Welcome ${data.val().resturantName}`
-//             })
-//         }
-//     })
-// }
 
 
 let pending = () => {
@@ -153,15 +132,17 @@ let pending = () => {
                     console.log(childKey);
                     let userPendingOrders1 = document.getElementById("userPendingOrders");
                     userPendingOrders1.innerHTML += `
-            <div class="card myCard" style="width: 18rem;">
-        <img src="${childData.pic}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${childData.itemName}</h5>
-          <p class="card-text">${childData.category} </p>
-          <p class="card-text">Price Rs ${childData.price} </p>
-          <p class="card-text">Type of Delivery ${childData.delType} </p>          
-        </div>
-    </div>`
+                    <div class="card border-danger mb-3" style="max-width: 18rem;">
+                    <img src="${childData.pic}" class="card-img-top" alt="...">
+                    <div class="card-header">${childData.itemName}</div>
+                    <div class="card-body text-dark">
+                      <p class="card-text"><strong>Catergory :</strong>${childData.catergory} </p>
+                      <p class="card-text"><strong>Price Rs :</strong>${childData.price} </p>
+                      <p class="card-text"><strong>Type of Delivery :</strong>${childData.delType} </p>
+                      <p class="card-text"><strong>Status :</strong>${childData.status} </p>       
+                            
+                    </div>
+                </div>`
                 });
             });
 
@@ -169,41 +150,48 @@ let pending = () => {
     })
 }
 
-let array = []
-let addToCart = (obj, user) => {
-    let dummyArray = [...array]
-    dummyArray.push(obj)
-    array = dummyArray
-    console.log(obj)
-    firebase.database().ref(`cart/${user.uid}`).update(obj)
-}
+
 
 let pendingOrder = () => {
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             let pro = firebase.database().ref(`cart`).orderByChild("uid").equalTo(user.uid);
-            console.log(pro)
+            // console.log(pro)
+            let pendingOrder1 = document.getElementById("pendingOrder");
+            pendingOrder1.innerHTML=""
             pro.on('value', function (snapshot) {
                 snapshot.forEach(function (childSnapshot) {
                     var childKey = childSnapshot.key;
                     var childData = childSnapshot.val();
                     console.log(childKey);
-                    let pendingOrder1 = document.getElementById("pendingOrder");
                     pendingOrder1.innerHTML += `
-            <div class="card myCard" style="width: 18rem;">
-        <img src="${childData.pic}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${childData.itemName}</h5>
-          <p class="card-text">${childData.category} </p>
-          <p class="card-text">Price Rs ${childData.price} </p>
-          <p class="card-text">Type of Delivery ${childData.delType} </p>
-          <p class="card-text">Type of status ${childData.status} </p>
-          <button onclick=${accept(data.val(), user)}>Accept</button>            
-        </div>
-    </div>`
+                    <div class="card border-danger mb-3" style="max-width: 18rem;">
+                    <img src="${childData.pic}" class="card-img-top" alt="...">
+                    <div class="card-header">${childData.itemName}</div>
+                    <div class="card-body text-dark">
+                      <p class="card-text"><strong>Catergory :</strong>${childData.catergory} </p>
+                      <p class="card-text"><strong>Price Rs :</strong>${childData.price} </p>
+                      <p class="card-text"><strong>Type of Delivery :</strong>${childData.delType} </p>
+                      <p class="card-text"><strong>Status :</strong>${childData.status} </p>
+                      <button class="btn myBtn" onclick="accept(this,'${childKey}')" >Accept</button>       
+                            
+                    </div>
+                </div>`
                 });
             });
 
         }
     })
+}
+let accept=(btn,a)=>{
+console.log(a)
+    btn.parentNode.remove()
+    firebase.database().ref(`cart/${a}`).update({
+        status: "Accepted"
+    })
+//     window.location.reload()
+// }
+}
+let bill=()=>{
+    window.location="cart.html"
 }

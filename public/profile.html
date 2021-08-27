@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body onload="profilePage()">
     <div class="main">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="header-logo">
@@ -79,7 +79,7 @@
                 <div class="col-3">
                   <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <span class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Profile</span>
-                    <span class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Pending Orders</span>
+                    <span class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"  onclick="pending()">Pending Orders</span>
                     <span class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Accepte Orders</span>
                     <span class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Complete Orders</span>
                   </div>
@@ -90,11 +90,10 @@
                         <h1>Profile</h1>
 
                     </div>
-                    <div onclick="pending()" class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                         <h1>Pending Orders</h1>
-                        <div id="userPendingOrders">
-                            Hello
-
+                        <div id="userPendingOrders" class="d-flex justify-content-around flex-wrap">
+                            
                         </div>
 
 
