@@ -65,7 +65,16 @@ margin-bottom: 1px !important;
 }
 .btn:hover {
   color: white;
-  font-size: 13.5px;
+}
+.thead-danger{
+  background-color: red;
+  color: white;
+}
+.myTableBtn{
+  width: 100px;
+  font-size: 14px;
+  text-align: center !important;
+  padding: 0 auto !important;
 }
 .myBtn{
   background-color: rgb(251, 0, 0);
@@ -152,7 +161,23 @@ button {
   background-repeat: no-repeat;
   text-align: left;
 }
-
+.sideBtn{
+  background-color: white;
+  color: black;
+  box-shadow: none;
+  border: none;
+}
+.sideBtn:active{
+opacity: 0.7;
+}
+.sideBtn:hover{
+  background-color: red;
+  color: white;
+}
+.sideBtn-active{
+  background-color: red;
+  color: white;
+}
 .brand {
   background-color: rgba(88, 7, 7, 0.75);
   /* text-align: center; */
@@ -180,6 +205,46 @@ h2 {
   background-color: white;
   border-radius: 30px;
   cursor: pointer;
+}
+.statusBox-Pending{
+  width: 100%;
+  background-color: yellow;
+  height: 100px;
+  border-radius: 100px;
+}
+.statusBox-Pending>h2{
+  font-size: 20px;
+  color: black;
+}
+.statusBox-Accepted{
+  width: 100%;
+  background-color: green;
+  height: 100px;
+  border-radius: 100px;
+}
+.statusBox-Accepted>h2{
+  font-size: 20px;
+  color: white
+}
+.statusBox-Delivered{
+  width: 100%;
+  background-color: pink;
+  height: 100px;
+  border-radius: 100px;
+}
+.statusBox-Delivered>h2{
+  font-size: 20px;
+  color: black;
+}
+.statusBox-Rejected{
+  width: 100%;
+  background-color: rgb(255, 0, 43);
+  height: 100px;
+  border-radius: 100px;
+}
+.statusBox-Rejected>h2{
+  font-size: 20px;
+  color: black;
 }
 ul {
   list-style-type: none;

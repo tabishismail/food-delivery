@@ -12,7 +12,7 @@
 
 </head>
 
-<body onload="restDash()" >
+<body onload="restDash()">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="header-logo">
@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item active nav-li">
-                 <a href="../index.html">Home</a>
+                        Home
                     </li>
                     <li class="nav-item nav-li">About Us
                     </li>
@@ -40,11 +40,11 @@
                             <span class="dropdown-item">Abc</span>
 
                     </li>
-                    <li class="nav-item nav-li">Become a Partner
+                    <li class="nav-item nav-li" onclick="business()" >Become a Partner
                     </li>
-                    <li class="nav-item nav-li">Rs.0<img class="icon" src="image/shopping-cart.png" alt=""></li>
-                    <li class="nav-item nav-li btn">Order Online</li>
-                    <li class="nav-item nav-li" id="signupBtn" data-toggle="modal" data-target="#exampleModal">Signup</li>
+                    <li class="nav-item nav-li btn" onclick="signup()" >Order Online</li>
+                    <li class="nav-item nav-li" id="signupBtn" data-toggle="modal" data-target="#exampleModal">Signup
+                    </li>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -69,209 +69,57 @@
                     </div>
                     <li id="login-Btn" class="nav-item nav-li" onclick="login()">Log In</li>
                     <li id="logOut-Btn" class="nav-item nav-li" onclick="logOut()">Log Out</li>
+                    <li id="userProfile" class="nav-item nav-li" onclick="userProfile()">Profile</li>
+                    <li id="dashboard" class="nav-item nav-li" onclick="dashboard()">Dashboard</li>
+                    <li id="bill" class="nav-item nav-li" onclick="bill()" >Check Out</li>
+
+
                 </ul>
 
             </div>
         </nav>
-        <div>
-            <div class="slider">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                      <div class="carousel-item active " data-interval="2000">
-                        <img src="image/1.jpg" class="d-block w-100"  alt="...">
-                      </div>
-                      <div class="carousel-item" data-interval="2000">
-                        <img src="image/2.jpg" class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item" data-interval="2000">
-                        <img src="image/3.jpg" class="d-block w-100" alt="...">
-                      </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </div>
-
-
+        <div class="row justify-content-center">
             <h1 id="profileName">Welcome Abc</h1>
-            <div class="row">
-                <div class="col-3 newTab">
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <span class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
-                            role="tab" aria-controls="v-pills-home" aria-selected="true">Products</span>
-                        <span class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
-                            role="tab" aria-controls="v-pills-profile" aria-selected="false" onclick="pendingOrder()" >Pending Orders</span>
-                        <span class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
-                            role="tab" aria-controls="v-pills-messages" aria-selected="false">Accepted Orders </span>
-                        <span class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings"
-                            role="tab" aria-controls="v-pills-settings" aria-selected="false">Delivered Orders</span>
-                    </div>
-                </div>
-                <div class="col-12 newTab1">
-                    <div class="nav flex-row nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <span class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
-                            role="tab" aria-controls="v-pills-home" aria-selected="true">Products</span>
-                        <span class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
-                            role="tab" aria-controls="v-pills-profile" aria-selected="false" onclick="pendingOrder()" >Pending Orders</span>
-                        <span class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
-                            role="tab" aria-controls="v-pills-messages" aria-selected="false">Accepted Orders </span>
-                        <span class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings"
-                            role="tab" aria-controls="v-pills-settings" aria-selected="false">Delivered Orders</span>
-                    </div>
-                </div>
-                <div class="col-9">
-                    <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                            aria-labelledby="v-pills-home-tab">
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#products">Add
-                                Products</button>
-                            <div id="pro-tab" class="d-flex flex-wrap justify-content-around">
-
-                            </div>
-                            <!-- Modal -->
-                            <div class="modal fade" id="products" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
-
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <label for="itemName">Item Name</label>
-                                                <input placeholder="Enter Item Name" type="text" class="form-control" id="itemName">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="category">Category</label>
-                                                <select class="form-control" name="category" id="category">
-                                                    <option value="Bar B-Q">Bar B-Q</option>
-                                                    <option value="Chinese">Chinese</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="delType">Delivery Type</label>
-                                                <select class="form-control" name="delType" id="delType">
-                                                    <option value="Free Delivery">Free Delivery</option>
-                                                    <option value="Paid Delivery">Paid Delivery</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="price">Price</label>
-                                                <input type="number" placeholder="Enter Price" class="form-control" id="price">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="image">Image</label>
-                                                <small> (should be 800px X 600px)</small>
-                                                <input type="file" class="form-control" id="image">
-                                            </div>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn myBtn" onclick="addProduct()">Add
-                                                Product</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Edit Modal -->
-                            <div class="modal fade" id="editProducts" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
-
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <label for="itemName1">Item Name</label>
-                                                <input placeholder="Enter Item Name" type="text" class="form-control" id="itemName1">
-                                                <input type="text" id="itemKey" style="display: none;">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="category1">Category</label>
-                                                <select class="form-control" name="category" id="category1">
-                                                    <option value="Bar B-Q">Bar B-Q</option>
-                                                    <option value="Chinese">Chinese</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="delType1">Delivery Type</label>
-                                                <select class="form-control" name="delType" id="delType1">
-                                                    <option value="Free Delivery">Free Delivery</option>
-                                                    <option value="Paid Delivery">Paid Delivery</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="price1">Price</label>
-                                                <input type="number" placeholder="Enter Price" class="form-control" id="price1">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="image1">Image</label>
-                                                <small> (should be 800px X 600px)</small>
-                                                <input type="file" class="form-control" id="image1">
-                                            </div>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" id="close" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn myBtn" onclick="editProduct()">Save</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                            aria-labelledby="v-pills-profile-tab">
-                            <h1>Pending Orders</h1>
-                            <div id="pendingOrder" class="d-flex justify-content-around flex-wrap">
-
-                            </div>
-
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                            aria-labelledby="v-pills-messages-tab">
-                            <h1>Accepted Orders</h1>
-                            <div id="acceptOrder">
-
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                            aria-labelledby="v-pills-settings-tab">
-                            <h1>Delivered Orders</h1>
-                            <div id="deliveredOrder">
-
-                            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 d-flex flex-column">
+                <button class="sideBtn sideBtn-active">Dash Board</button>
+                <button class="sideBtn"onclick="proPage()">Products</button>
+                <button class="sideBtn" onclick="pendingPage()">Pending Orders</button>
+                <button class="sideBtn" onclick="acceptPage()">Accepted Orders</button>
+                <button class="sideBtn" onclick="rejectPage()">Rejected Orders</button>
+                <button class="sideBtn" onclick="historyPage()">Delivered Orders</button>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="statusBox-Pending">
+                            <h2>Pending Orders</h2>
+                            <div></div>
                         </div>
                     </div>
+                    <div class="col-3">
+                        <div class="statusBox-Accepted">
+                            <h2>Accepted Orders</h2>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="statusBox-Delivered">
+                            <h2>Delivered Orders</h2>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="statusBox-Rejected">
+                            <h2>Rejected Orders</h2>
+                            <div></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-
-
-
 
 
         <div class="pre-footer-container">
@@ -355,8 +203,8 @@
         firebase.initializeApp(firebaseConfig);
     </script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="dashboard.js"></script>
-    <script src="app.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>

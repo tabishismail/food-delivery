@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item active nav-li">
-                       <a href="../index.html">Home</a>
+                        Home
                     </li>
                     <li class="nav-item nav-li">About Us
                     </li>
@@ -40,11 +40,11 @@
                             <span class="dropdown-item">Abc</span>
 
                     </li>
-                    <li class="nav-item nav-li">Become a Partner
+                    <li class="nav-item nav-li" onclick="business()" >Become a Partner
                     </li>
-                    <li class="nav-item nav-li">Rs.0<img class="icon" src="image/shopping-cart.png" alt=""></li>
-                    <li class="nav-item nav-li btn">Order Online</li>
-                    <li class="nav-item nav-li" id="signupBtn" data-toggle="modal" data-target="#exampleModal">Signup</li>
+                    <li class="nav-item nav-li btn" onclick="signup()" >Order Online</li>
+                    <li class="nav-item nav-li" id="signupBtn" data-toggle="modal" data-target="#exampleModal">Signup
+                    </li>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -69,6 +69,11 @@
                     </div>
                     <li id="login-Btn" class="nav-item nav-li" onclick="login()">Log In</li>
                     <li id="logOut-Btn" class="nav-item nav-li" onclick="logOut()">Log Out</li>
+                    <li id="userProfile" class="nav-item nav-li" onclick="userProfile()">Profile</li>
+                    <li id="dashboard" class="nav-item nav-li" onclick="dashboard()">Dashboard</li>
+                    <li id="bill" class="nav-item nav-li" onclick="bill()" >Check Out</li>
+
+
                 </ul>
 
             </div>
@@ -80,8 +85,8 @@
                   <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <span class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Profile</span>
                     <span class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"  onclick="pending()">Pending Orders</span>
-                    <span class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Accepte Orders</span>
-                    <span class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Complete Orders</span>
+                    <span class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false" onclick="userAccept()" >Accepte Orders</span>
+                    <span class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false" onclick="userComplete()">Complete Orders</span>
                   </div>
                 </div>
                 <div class="col-9">
@@ -199,8 +204,8 @@
         firebase.initializeApp(firebaseConfig);
     </script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="dashboard.js"></script>
-    <script src="app.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
