@@ -1,23 +1,3 @@
-// firebase.auth().onAuthStateChanged((user) => {
-//     if (user) {
-//                 window.location = "rest-dash.html";
-//         // firebase.database().ref(`resturant/${user.uid}`).once("value", (user) => {
-//         //     if (user.val()) {
-//         //     } else {
-//         //         window.location = "profile.html"
-//         //     }   
-
-//         // })
-//         // var uid = user.uid;
-//         // ...
-//     }
-//     else {
-//         window.location="index.html"
-//     }
-// });
-
-
-
 
 let signup = () => {
     window.location = "signup.html"
@@ -284,6 +264,9 @@ let loginPage = () => {
     let loginBtn = document.getElementById("login-Btn");
     let logOutBtn = document.getElementById("logOut-Btn");
     let signUpBtn = document.getElementById("signupBtn");
+    let userProfile = document.getElementById("userProfile");
+    let dashboard = document.getElementById("dashboard");
+    let bill = document.getElementById("bill");
 
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
@@ -300,6 +283,9 @@ let loginPage = () => {
             loginBtn.style.display = "none";
             logOutBtn.style.display = "none"
             signUpBtn.style.display = "block"
+            userProfile.style.display = "none"
+            dashboard.style.display = "none"
+            bill.style.display = "none"
             // ...
         }
     })
@@ -308,126 +294,40 @@ let loginPage = () => {
 }
 
 
-let addToCart = (a,b,c,d,e,f,g, key) => {
-    console.log(a,b,c,d,e,f,g,key)
-    
-    firebase.database().ref(`cart`).push({
-        pic:a,
-        itemName:b,
-        catergory:c,
-        price:d,
-        delType:e,
-        uid:f,
-        custUid:key,
-        status:g
+let addToCart = (a, b, c, d, e, f, g, key) => {
+    console.log(a, b, c, d, e, f, g, key)
+
+    firebase.database().ref(`cart/pending`).push({
+        pic: a,
+        itemName: b,
+        catergory: c,
+        price: d,
+        delType: e,
+        uid: f,
+        custUid: key,
+        status: g
     })
     // firebase.database().ref(`cart/${user}`).update(obj)
 }
 
-
-let index = () => {
-    firebase.auth().onAuthStateChanged((user) => {
-        let loginBtn = document.getElementById("login-Btn");
-        let logOutBtn = document.getElementById("logOut-Btn");
-        let signUpBtn = document.getElementById("signupBtn");
-        let signUpBtn2 = document.getElementById("signupBtn2");
-        let userProfile = document.getElementById("userProfile");
-        let dashboard = document.getElementById("dashboard");
-        let bill = document.getElementById("bill");
-
-        if (user) {
-            let cust=user.uid;
-            console.log(cust)
-            firebase.database().ref(`resturant/${user.uid}`).once("value", (user) => {
-                if (user.val()) {
-                    dashboard.style.display = "block";
-                    userProfile.style.display = "none";
-                    bill.style.display="none"
-                    firebase.database().ref(`products`).on("child_added", (data) => {
-                        console.log(data.val().itemName)
-                        let dishes = document.getElementById("dishes");
-                        dishes.innerHTML += `
-                    <div class="card border-light mb-3" style="max-width: 18rem;">
-                    <img src="${data.val().pic}" class="card-img-top" alt="...">
-                    <div class="card-header">${data.val().itemName}</div>
-                    <div class="card-body text-dark">
-                    <p class="card-text"><strong>Catergory :</strong>${data.val().category} </p>
-                    <p class="card-text"><strong>Price Rs :</strong>${data.val().price} </p>
-                    <p class="card-text"><strong>Type of Delivery :</strong>${data.val().delType} </p>       
-                    </div>
-                    </div> `})
-
-                } else {
-                    dashboard.style.display = "none";
-                    userProfile.style.display = "block";
-                    bill.style.display="block"
-                    firebase.database().ref(`products`).on("child_added", (data) => {
-                        let dishes = document.getElementById("dishes");
-                        let key=user.key
-                        dishes.innerHTML += `
-                        <div class="card border-light mb-3" style="max-width: 18rem;">
-                        <img src="${data.val().pic}" class="card-img-top" alt="...">
-                        <div class="card-header">${data.val().itemName}</div>
-                        <div class="card-body text-dark">
-                          <p class="card-text"><strong>Catergory :</strong>${data.val().category} </p>
-                          <p class="card-text"><strong>Price Rs :</strong>${data.val().price} </p>
-                          <p class="card-text"><strong>Type of Delivery :</strong>${data.val().delType} </p>       
-                          <button class=""myBtn indexSignup" onclick="addToCart('${data.val().pic}','${data.val().itemName}','${data.val().category}','${data.val().price}','${data.val().delType}','${data.val().uid}','${data.val().status}','${key}')">Add to Cart</button>       
-                        </div>
-                    </div>`
-               })
-                }
-            })
-            loginBtn.style.display = "none";
-            logOutBtn.style.display = "block"
-            signUpBtn.style.display = "none"
-            signUpBtn2.style.display = "none"
-            
-        }
-        else {
-            // User is signed out
-            dashboard.style.display = "none";
-            userProfile.style.display = "none";
-            loginBtn.style.display = "block";
-            logOutBtn.style.display = "none"
-            signUpBtn.style.display = "block"
-            signUpBtn2.style.display = "block"
-            bill.style.display="none"
-            firebase.database().ref(`products`).on("child_added", (data) => {
-                console.log(data.val().itemName)
-                let dishes = document.getElementById("dishes");
-                dishes.innerHTML += `
-                <div class="card border-light mb-3" style="max-width: 18rem;">
-                <img src="${data.val().pic}" class="card-img-top" alt="...">
-                <div class="card-header">${data.val().itemName}</div>
-                <div class="card-body text-dark">
-                <p class="card-text"><strong>Catergory :</strong>${data.val().category} </p>
-                <p class="card-text"><strong>Price Rs :</strong>${data.val().price} </p>
-                <p class="card-text"><strong>Type of Delivery :</strong>${data.val().delType} </p>      
-                  <button class="myBtn indexSignup" data-toggle="modal" data-target="#exampleModal">Add to Cart</button>       
-                </div>
-            </div> `
-          
-          
-                 
-        })
-            
-            // ...
-        }
-    }
-    )
+let proPage = () => {
+    window.location = "products.html"
 }
-
-let userProfile=()=>{
-    window.location="profile.html"
+let acceptPage = () => {
+    window.location = "acceptPage.html"
 }
-
-let restDash = () => {
+let rejectPage = () => {
+    window.location = "rejectPage.html"
+}
+let historyPage = () => {
+    window.location = "deliveredPage.html"
+}
+let proPageLoad = () => {
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             firebase.database().ref(`resturant/${user.uid}`).once("value", (data) => {
                 let profileName = document.getElementById("profileName");
-                profileName.innerHTML = `Welcome TO ${data.val().resturantName}`
+                profileName.innerHTML = `Welcome ${data.val().resturantName}`
                 let loginBtn = document.getElementById("login-Btn");
                 let logOutBtn = document.getElementById("logOut-Btn");
                 let signUpBtn = document.getElementById("signupBtn");
@@ -449,11 +349,334 @@ let restDash = () => {
     )
 }
 
-let dashboard=()=>{
-    window.location="rest-dash.html"
+let pendingPageLoad = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            firebase.database().ref(`resturant/${user.uid}`).once("value", (data) => {
+                let profileName = document.getElementById("profileName");
+                profileName.innerHTML = `Welcome ${data.val().resturantName}`
+                let loginBtn = document.getElementById("login-Btn");
+                let logOutBtn = document.getElementById("logOut-Btn");
+                let signUpBtn = document.getElementById("signupBtn");
+                let userProfile = document.getElementById("userProfile");
+                let dashboard = document.getElementById("dashboard");
+                let bill = document.getElementById("bill");
+                loginBtn.style.display = "none";
+                logOutBtn.style.display = "block"
+                signUpBtn.style.display = "none"
+                dashboard.style.display = "none"
+                userProfile.style.display = "none"
+                bill.style.display = "none"
+                pendingOrder()
+
+            })
+        }
+        else {
+            // User is signed out
+            loginBtn.style.display = "block";
+            logOutBtn.style.display = "none"
+            signUpBtn.style.display = "block"
+            // ...
+        }
+    }
+    )
+}
+let rejectPageLoad = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            firebase.database().ref(`resturant/${user.uid}`).once("value", (data) => {
+                let profileName = document.getElementById("profileName");
+                profileName.innerHTML = `Welcome ${data.val().resturantName}`
+                let loginBtn = document.getElementById("login-Btn");
+                let logOutBtn = document.getElementById("logOut-Btn");
+                let signUpBtn = document.getElementById("signupBtn");
+                let userProfile = document.getElementById("userProfile");
+                let dashboard = document.getElementById("dashboard");
+                let bill = document.getElementById("bill");
+                loginBtn.style.display = "none";
+                logOutBtn.style.display = "block"
+                signUpBtn.style.display = "none"
+                dashboard.style.display = "none"
+                userProfile.style.display = "none"
+                bill.style.display = "none"
+                rejectOrder()
+
+            })
+        }
+        else {
+            // User is signed out
+            loginBtn.style.display = "block";
+            logOutBtn.style.display = "none"
+            signUpBtn.style.display = "block"
+            // ...
+        }
+    }
+    )
+}
+let deliveredPageLoad = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            firebase.database().ref(`resturant/${user.uid}`).once("value", (data) => {
+                let profileName = document.getElementById("profileName");
+                profileName.innerHTML = `Welcome ${data.val().resturantName}`
+                let loginBtn = document.getElementById("login-Btn");
+                let logOutBtn = document.getElementById("logOut-Btn");
+                let signUpBtn = document.getElementById("signupBtn");
+                let userProfile = document.getElementById("userProfile");
+                let dashboard = document.getElementById("dashboard");
+                let bill = document.getElementById("bill");
+                loginBtn.style.display = "none";
+                logOutBtn.style.display = "block"
+                signUpBtn.style.display = "none"
+                dashboard.style.display = "none"
+                userProfile.style.display = "none"
+                bill.style.display = "none"
+                deliveredOrder()
+
+            })
+        }
+        else {
+            // User is signed out
+            loginBtn.style.display = "block";
+            logOutBtn.style.display = "none"
+            signUpBtn.style.display = "block"
+            // ...
+        }
+    }
+    )
+}
+let businessSignUp = () => {
+    let loginBtn = document.getElementById("login-Btn");
+    let logOutBtn = document.getElementById("logOut-Btn");
+    let signUpBtn = document.getElementById("signupBtn");
+    let userProfile = document.getElementById("userProfile");
+    let dashboard = document.getElementById("dashboard");
+    let bill = document.getElementById("bill");
+
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            firebase.database().ref(`resturant/${user.uid}`).once("value", (user) => {
+                if (user.val()) {
+                    window.location = "rest-dash.html";
+                } else {
+                    window.location = "profile.html"
+                }
+            })
+        }
+        else {
+            // User is signed out
+            loginBtn.style.display = "block";
+            logOutBtn.style.display = "none"
+            signUpBtn.style.display = "block"
+            userProfile.style.display = "none"
+            dashboard.style.display = "none"
+            bill.style.display = "none"
+            // ...
+        }
+    })
+}
+let custSignUp = () => {
+    let loginBtn = document.getElementById("login-Btn");
+    let logOutBtn = document.getElementById("logOut-Btn");
+    let signUpBtn = document.getElementById("signupBtn");
+    let userProfile = document.getElementById("userProfile");
+    let dashboard = document.getElementById("dashboard");
+    let bill = document.getElementById("bill");
+
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            firebase.database().ref(`resturant/${user.uid}`).once("value", (user) => {
+                if (user.val()) {
+                    window.location = "rest-dash.html";
+                } else {
+                    window.location = "profile.html"
+                }
+            })
+        }
+        else {
+            // User is signed out
+            loginBtn.style.display = "block";
+            logOutBtn.style.display = "none"
+            signUpBtn.style.display = "block"
+            userProfile.style.display = "none"
+            dashboard.style.display = "none"
+            bill.style.display = "none"
+            // ...
+        }
+    })
 }
 
-let profilePage=()=>{
+let acceptPageLoad = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            firebase.database().ref(`resturant/${user.uid}`).once("value", (data) => {
+                let profileName = document.getElementById("profileName");
+                profileName.innerHTML = `Welcome ${data.val().resturantName}`
+                let loginBtn = document.getElementById("login-Btn");
+                let logOutBtn = document.getElementById("logOut-Btn");
+                let signUpBtn = document.getElementById("signupBtn");
+                let userProfile = document.getElementById("userProfile");
+                let dashboard = document.getElementById("dashboard");
+                let bill = document.getElementById("bill");
+                loginBtn.style.display = "none";
+                logOutBtn.style.display = "block"
+                signUpBtn.style.display = "none"
+                dashboard.style.display = "none"
+                userProfile.style.display = "none"
+                bill.style.display = "none"
+                acceptOrder()
+
+            })
+        }
+        else {
+            // User is signed out
+            loginBtn.style.display = "block";
+            logOutBtn.style.display = "none"
+            signUpBtn.style.display = "block"
+            // ...
+        }
+    }
+    )
+}
+
+let pendingPage = () => {
+    window.location = "pendingPage.html"
+}
+let dash = () => {
+    window.location = "rest-dash.html"
+}
+let index = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+        let loginBtn = document.getElementById("login-Btn");
+        let logOutBtn = document.getElementById("logOut-Btn");
+        let signUpBtn = document.getElementById("signupBtn");
+        let signUpBtn2 = document.getElementById("signupBtn2");
+        let userProfile = document.getElementById("userProfile");
+        let dashboard = document.getElementById("dashboard");
+        let bill = document.getElementById("bill");
+
+        if (user) {
+            let cust = user.uid;
+            console.log(cust)
+            firebase.database().ref(`resturant/${user.uid}`).once("value", (user) => {
+                if (user.val()) {
+                    dashboard.style.display = "block";
+                    userProfile.style.display = "none";
+                    bill.style.display = "none"
+                    firebase.database().ref(`products`).on("child_added", (data) => {
+                        console.log(data.val().itemName)
+                        let dishes = document.getElementById("dishes");
+                        dishes.innerHTML += `
+                    <div class="card border-light mb-3" style="max-width: 18rem;">
+                    <img src="${data.val().pic}" class="card-img-top" alt="...">
+                    <div class="card-header">${data.val().itemName}</div>
+                    <div class="card-body text-dark">
+                    <p class="card-text"><strong>Catergory :</strong>${data.val().category} </p>
+                    <p class="card-text"><strong>Price Rs :</strong>${data.val().price} </p>
+                    <p class="card-text"><strong>Type of Delivery :</strong>${data.val().delType} </p>       
+                    </div>
+                    </div> `})
+
+                } else {
+                    dashboard.style.display = "none";
+                    userProfile.style.display = "block";
+                    bill.style.display = "block"
+                    firebase.database().ref(`products`).on("child_added", (data) => {
+                        let dishes = document.getElementById("dishes");
+                        let key = user.key
+                        dishes.innerHTML += `
+                        <div class="card border-light mb-3" style="max-width: 18rem;">
+                        <img src="${data.val().pic}" class="card-img-top" alt="...">
+                        <div class="card-header">${data.val().itemName}</div>
+                        <div class="card-body text-dark">
+                          <p class="card-text"><strong>Catergory :</strong>${data.val().category} </p>
+                          <p class="card-text"><strong>Price Rs :</strong>${data.val().price} </p>
+                          <p class="card-text"><strong>Type of Delivery :</strong>${data.val().delType} </p>       
+                          <button class=""myBtn indexSignup" onclick="addToCart('${data.val().pic}','${data.val().itemName}','${data.val().category}','${data.val().price}','${data.val().delType}','${data.val().uid}','${data.val().status}','${key}')">Add to Cart</button>       
+                        </div>
+                    </div>`
+                    })
+                }
+            })
+            loginBtn.style.display = "none";
+            logOutBtn.style.display = "block"
+            signUpBtn.style.display = "none"
+            signUpBtn2.style.display = "none"
+
+        }
+        else {
+            // User is signed out
+            dashboard.style.display = "none";
+            userProfile.style.display = "none";
+            loginBtn.style.display = "block";
+            logOutBtn.style.display = "none"
+            signUpBtn.style.display = "block"
+            signUpBtn2.style.display = "block"
+            bill.style.display = "none"
+            firebase.database().ref(`products`).on("child_added", (data) => {
+                console.log(data.val().itemName)
+                let dishes = document.getElementById("dishes");
+                dishes.innerHTML += `
+                <div class="card border-light mb-3" style="max-width: 18rem;">
+                <img src="${data.val().pic}" class="card-img-top" alt="...">
+                <div class="card-header">${data.val().itemName}</div>
+                <div class="card-body text-dark">
+                <p class="card-text"><strong>Catergory :</strong>${data.val().category} </p>
+                <p class="card-text"><strong>Price Rs :</strong>${data.val().price} </p>
+                <p class="card-text"><strong>Type of Delivery :</strong>${data.val().delType} </p>      
+                  <button class="myBtn indexSignup" data-toggle="modal" data-target="#exampleModal">Add to Cart</button>       
+                </div>
+            </div> `
+
+
+
+            })
+
+            // ...
+        }
+    }
+    )
+}
+
+let userProfile = () => {
+    window.location = "profile.html"
+}
+let restDash = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            firebase.database().ref(`resturant/${user.uid}`).once("value", (data) => {
+                let profileName = document.getElementById("profileName");
+                profileName.innerHTML = `Welcome TO ${data.val().resturantName}`
+                let loginBtn = document.getElementById("login-Btn");
+                let logOutBtn = document.getElementById("logOut-Btn");
+                let signUpBtn = document.getElementById("signupBtn");
+                let userProfile = document.getElementById("userProfile");
+                let dashboard = document.getElementById("dashboard");
+                let bill = document.getElementById("bill");
+                loginBtn.style.display = "none";
+                logOutBtn.style.display = "block"
+                signUpBtn.style.display = "none"
+                userProfile.style.display = "none"
+                bill.style.display = "none"
+                dashboard.style.display = "none"
+            })
+        }
+        else {
+            // User is signed out
+            loginBtn.style.display = "block";
+            logOutBtn.style.display = "none"
+            signUpBtn.style.display = "block"
+            // ...
+        }
+    }
+    )
+}
+
+let dashboard = () => {
+    window.location = "rest-dash.html"
+}
+
+let profilePage = () => {
     let loginBtn = document.getElementById("login-Btn");
     let logOutBtn = document.getElementById("logOut-Btn");
     let signUpBtn = document.getElementById("signupBtn");
@@ -471,7 +694,7 @@ let profilePage=()=>{
             })
         }
         else {
-            window.location="login.html"
+            window.location = "login.html"
         }
     })
 
